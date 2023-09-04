@@ -1,0 +1,15 @@
+service: nest-shopping-cart-microservice
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+
+functions:
+  app:
+    handler: dist/main
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
